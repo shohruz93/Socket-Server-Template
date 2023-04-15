@@ -64,6 +64,18 @@ const broadcast = (ws, message, includeSelf) => {
   }
 };
 
+/**
+ * Sends a ping message to all connected clients every 50 seconds
+ */
+ const keepServerAlive = () => {
+  keepAliveId = setInterval(() => {
+    wss.clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) 
+        console.log("ping");
+      }
+    });
+  }, 50000);
+};
 
 app.get('/', (req, res) => {
     res.send('Сервер кор карда истодааст...!');
