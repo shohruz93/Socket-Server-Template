@@ -70,12 +70,13 @@ const broadcast = (ws, message, includeSelf) => {
  const keepServerAlive = () => {
   keepAliveId = setInterval(() => {
     wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) 
-        console.log("ping");
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(JSON.stringify({"ping" : "ping"}))
       }
     });
   }, 50000);
 };
+
 
 app.get('/', (req, res) => {
     res.send('Сервер кор карда истодааст...!');
