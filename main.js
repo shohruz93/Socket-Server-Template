@@ -79,5 +79,5 @@ const broadcast = (ws, message, includeSelf) => {
 
 
 app.get('/', (req, res) => {
-    res.send('Сервер кор карда истодааст...!');
+    res.send('Сервер кор карда истодааст...! '+req);
 });
