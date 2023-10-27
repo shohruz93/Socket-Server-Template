@@ -78,11 +78,11 @@ const broadcast = (ws, message, includeSelf) => {
 };
 
 
-app.get('/', (req, res) => {
+app.get('/:action', (req, res) => {
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {
         client.send(JSON.stringify({"ping" : "call"}))
-        res.send('Сигнал фиристода шуд! '+req);
+        res.send('Сигнал фиристода шуд! '+req.params['action']);
       }
     });
 });
