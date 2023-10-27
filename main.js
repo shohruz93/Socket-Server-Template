@@ -79,10 +79,10 @@ const broadcast = (ws, message, includeSelf) => {
 
 
 app.get('/', (req, res) => {
-    res.send('Сервер кор карда истодааст...! '+req);
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {
         client.send(JSON.stringify({"ping" : "call"}))
+        res.send('Сигнал фиристода шуд! '+req);
       }
     });
 });
