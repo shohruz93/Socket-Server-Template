@@ -81,7 +81,7 @@ const broadcast = (ws, message, includeSelf) => {
 app.get('/:action', (req, res) => {
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {
-        client.send(JSON.stringify({"ping" : req.params['action']}))
+        client.send(JSON.stringify({{"ping":1,"active": "EURUSD", "action": req.params['action'], "sum": 1, "duration": 5}}))
         res.send('Сигнал фиристода шуд! '+req.params['action']);
       }
     });
