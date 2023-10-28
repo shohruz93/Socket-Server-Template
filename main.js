@@ -82,7 +82,7 @@ app.get('/:action', (req, res) => {
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {
         const currentTimestamp = (!Date.now ? +new Date() : Date.now()) / 1000;
-        client.send(JSON.stringify({"ping":1,"active": "EURUSD", "action": req.params['action'], "sum": 1, "duration": 5, "start": currentTimestamp}))
+        client.send(JSON.stringify({"ping":1,"active": "EURUSD-OTC", "action": req.params['action'], "sum": 1, "duration": 5, "start": currentTimestamp}))
         res.send('Сигнал фиристода шуд! '+req.params['action']);
       }
     });
