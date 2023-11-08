@@ -78,12 +78,6 @@ const broadcast = (ws, message, includeSelf) => {
 };
 
 
-app.get('/:active/:action/:duration', (req, res) => {
-    wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
-        const currentTimestamp = (!Date.now ? +new Date() : Date.now()) / 1000;
-        client.send(JSON.stringify({"ping":1,"active":  req.params['active'], "action": req.params['action'], "sum": 1, "duration":  req.params['duration'], "start": currentTimestamp}))
-        res.send('Сигнал фиристода шуд! '+req.params['action']);
-      }
-    });
+app.get('/', (req, res) => {
+  res.send('Hello World!');
 });
